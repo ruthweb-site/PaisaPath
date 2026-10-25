@@ -1,0 +1,13 @@
+{
+  "note": "DEMO values for offline testing only. Not real market data.",
+  "demo_stocks": [
+    {"symbol": "DEMOTECH", "name": "Demo Tech Ltd", "price": 1250.50, "change_percent": 1.25, "session": "last trading session (demo)"},
+    {"symbol": "DEMOBANK", "name": "Demo Bank Ltd", "price": 842.10, "change_percent": -0.60, "session": "last trading session (demo)"}
+  ],
+  "sample_portfolio": {"Demo Tech Ltd": 40000, "Demo Bank Ltd": 25000, "Demo Index Fund": 30000, "Cash": 5000},
+  "personas": {
+    "Rahul":  {"income": 15000,  "expenses": 12500, "debt": 0,     "savings": 2000,   "goal": 50000},
+    "Priya":  {"income": 40000,  "expenses": 28000, "debt": 3000,  "savings": 30000,  "goal": 300000},
+    "Arjun":  {"income": 120000, "expenses": 60000, "debt": 15000, "savings": 400000, "goal": 2500000}
+  }
+}
