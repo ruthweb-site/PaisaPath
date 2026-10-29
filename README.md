@@ -125,6 +125,14 @@ npm run dev
 ```
 Open `http://localhost:5173` in your browser.
 
+### Option C: Docker / Nebius Cloud Deployment (Single Command)
+```bash
+docker compose up -d --build
+```
+- React Frontend + FastAPI API: `http://localhost:8000/`
+- Streamlit Dashboard: `http://localhost:8501/`
+- See [DEPLOYMENT_NEBIUS.md](DEPLOYMENT_NEBIUS.md) for step-by-step Nebius AI Cloud VM deployment.
+
 ---
 
 ## 🔒 Honesty & Compliance Rules

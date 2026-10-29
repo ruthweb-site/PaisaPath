@@ -317,3 +317,13 @@ def explain_scenarios(req: dict[str, Any]):
     context = {"scenarios": scenarios, "profile": profile}
     question = "Explain these three investment scenarios, their downside stress risk, and liquidity trade-offs for this investor."
     return {"answer": ask_nemotron(question, context)}
+
+
+# 6. Serve built React Frontend SPA (Production Container & Cloud Deployment)
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+
+FRONTEND_DIST = Path(__file__).parent / "frontend" / "dist"
+if FRONTEND_DIST.exists() and (FRONTEND_DIST / "index.html").exists():
+    app.mount("/", StaticFiles(directory=str(FRONTEND_DIST), html=True), name="frontend")
+
