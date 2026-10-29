@@ -7,8 +7,10 @@ from __future__ import annotations
 import json
 import logging
 import os
+from dotenv import load_dotenv
 from openai import OpenAI
 
+load_dotenv()
 logger = logging.getLogger(__name__)
 
 SYSTEM_PROMPT = """You are PaisaPath AI, a financial education assistant for first-time investors in India.
@@ -29,8 +31,8 @@ def _client() -> OpenAI | None:
     key = os.getenv("NEBIUS_API_KEY", "").strip()
     if not key or key == "your_key_here":
         return None
-    return OpenAI(base_url=os.getenv("NEBIUS_BASE_URL", "https://api.tokenfactory.nebius.com/v1/"),
-                  api_key=key)
+    base_url = os.getenv("NEBIUS_BASE_URL", "https://integrate.api.nvidia.com/v1/").rstrip("/") + "/"
+    return OpenAI(base_url=base_url, api_key=key)
 
 
 def _generate_fallback(question: str, context: dict | None = None, is_hindi: bool = False) -> str:
@@ -130,7 +132,7 @@ def ask_nemotron(question: str, context: dict | None = None, history: list[dict]
     if client is None:
         return _generate_fallback(question, context, is_hindi)
 
-    model = os.getenv("NEBIUS_MODEL", "nvidia/Llama-3_1-Nemotron-Ultra-253B-v1")
+    model = os.getenv("NEBIUS_MODEL", "nvidia/nemotron-3-ultra-550b-a55b")
     msgs = [{"role": "system", "content": SYSTEM_PROMPT}]
     if context:
         msgs.append({"role": "system",
